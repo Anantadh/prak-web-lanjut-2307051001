@@ -16,19 +16,45 @@
 
             <div>
                 <label for="nama" class="block font-medium">Nama :</label>
-                <input type="text" id="nama" name="nama" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500" required>
+                <input type="text" id="nama" name="nama" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500">
+               
+                @foreach ($errors->get('nama') as $msg)
+                <p style="color: red;">{{$msg}}</p>
+                @endforeach
+
             </div>
 
             <div>
                 <label for="npm" class="block font-medium">NPM :</label>
-                <input type="text" id="npm" name="npm" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500" required>
+                <input type="text" id="npm" name="npm" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500">
+           
+                @foreach ($errors->get('npm') as $msg)
+                <p style="color: red;">{{$msg}}</p>
+                @endforeach
+
+
+            </div>
+
+            <!-- <div>
+                <label for="kelas" class="block font-medium">Kelas :</label>
+                <input type="text" id="kelas" name="kelas" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500" required>        
+            </div> -->
+
+            <div>
+                <label for="kelas_id" class="block font-medium text-blue-600">Kelas :</label>
+                <select name="kelas_id" id="kelas_id"
+                    class="w-full border-2 border-blue-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-pink-400 focus:outline-none bg-blue-50">
+
+                    @foreach ($kelas as $kelasItem)
+                        <option value="{{ $kelasItem->id }}">{{ $kelasItem->nama_kelas }}</option>
+                    @endforeach
+                </select>
+                @error('kelas_id')
+                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
             </div>
 
             <div>
-                <label for="kelas" class="block font-medium">Kelas :</label>
-                <input type="text" id="kelas" name="kelas" class="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:ring-2 focus:ring-blue-500" required>
-            </div>
-
             <button type="submit" class="w-full bg-blue-500 text-white font-semibold py-2 rounded-lg hover:bg-blue-600 transition">Submit</button>
         </form>
     </div>
