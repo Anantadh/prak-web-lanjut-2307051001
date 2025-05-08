@@ -55,8 +55,10 @@
                     <label for="foto" class="form-label">Foto</label>
                     <input class="form-control" type="file" id="foto" name="foto">
                     @if ($user->foto)
-                        <img src="{{ asset('upload/img/' . $user->foto) }}" alt="Foto User" width="100">
-                    @endif
+                                    <img src="{{ asset('storage/uploads/' . $user->foto) }}" alt="Foto {{ $user->nama }}" width="50">
+                                @else
+                                    <span class="text-muted">Tidak ada foto</span>
+                                @endif
             </div>
             
             </div>
